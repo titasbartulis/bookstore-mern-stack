@@ -14,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/books/${id}`)
+      .delete(`${import.meta.env.VITE_API_URL}/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('The book was deleted successfully.', { variant: 'success' });
