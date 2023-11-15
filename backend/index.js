@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import booksRoute from './routes/booksRoute.js';
+import registersRoute from './routes/registersRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -19,6 +20,7 @@ app.get("/", (request, response) => {
 });
 
 app.use('/books', booksRoute);
+app.use('/registers', registersRoute);
 
 const PORT = process.env.PORT;
 

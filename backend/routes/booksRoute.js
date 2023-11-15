@@ -1,9 +1,10 @@
-import express from 'express';
-import { Book } from '../models/bookModel.js';
+import express from "express";
+import { Book } from "../models/bookModel.js";
+import { Register } from "../models/registerModel.js";
 
 const router = express.Router();
 
-// Route for Save a new Book
+// Route for posting a book
 router.post("/", async (request, response) => {
   try {
     if (
@@ -29,7 +30,7 @@ router.post("/", async (request, response) => {
   }
 });
 
-// Route for Get All Books from database
+// Route for getting all of books
 router.get("/", async (request, response) => {
   try {
     const books = await Book.find({});
@@ -43,7 +44,7 @@ router.get("/", async (request, response) => {
   }
 });
 
-// Route for Get one book from database by id
+// Route for getting one of the book by id
 router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
@@ -57,7 +58,7 @@ router.get("/:id", async (request, response) => {
   }
 });
 
-// Route for update a book
+// Route for updating a book
 router.put("/:id", async (request, response) => {
   try {
     if (
@@ -75,29 +76,28 @@ router.put("/:id", async (request, response) => {
     const result = await Book.findByIdAndUpdate(id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: 'Book not found' });
+      return response.status(404).json({ message: "Book not found" });
     }
 
-    return response.status(200).send({ message: 'Book updated successfully' });
-
+    return response.status(200).send({ message: "Book updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Route for Delete a book
-router.delete('/:id', async (request, response) => {
+// Route for deleting a book
+router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
 
     const result = await Book.findByIdAndDelete(id);
 
     if (!result) {
-      return response.status(404).json({ message: 'Book not found'});
+      return response.status(404).json({ message: "Book not found" });
     }
 
-    return response.status(200).send({ message: 'Book deleted successfully' });
+    return response.status(200).send({ message: "Book deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });

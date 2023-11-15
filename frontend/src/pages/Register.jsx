@@ -18,7 +18,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = "https://jsonplaceholder.typicode.com/posts";
+    const endpoint = `${import.meta.env.VITE_API_URL}/registers`;
 
     try {
       const response = await axios.post(endpoint, formData);
