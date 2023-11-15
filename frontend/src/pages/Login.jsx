@@ -24,7 +24,7 @@ const Login = () => {
       const response = await axios.post(endpoint, formData);
       console.log("Response:", response.data);
       setFormData(initialFormData);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error("Error submitting form:", error);
     }

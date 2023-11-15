@@ -24,7 +24,7 @@ const Register = () => {
       const response = await axios.post(endpoint, formData);
       console.log("Response:", response.data);
       setFormData(initialFormData);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Error submitting form:", error);
     }

@@ -11,8 +11,8 @@ import Register from './pages/Register';
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home />}/>
-      <Route path='/login' element={<Login />}></Route>
+      <Route path='/home' element={<Home />}/>
+      <Route path='/' element={<Login />}></Route>
       <Route path='/register' element={<Register />}></Route>
       <Route path='/books/create' element={<CreateBook />}/>
       <Route path='/books/details/:id' element={<ShowBook />}/>
