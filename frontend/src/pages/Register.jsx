@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const initialFormData = {
@@ -21,16 +22,22 @@ const Register = () => {
     const endpoint = `${import.meta.env.VITE_API_URL}/registers`;
 
     try {
-      const response = await axios.post(endpoint, formData);
-      console.log("Response:", response.data);
+      await axios.post(endpoint, formData);
       setFormData(initialFormData);
       navigate("/");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (error.response && error.response.data) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred while submitting the form.");
+      }
     }
   };
   return (
     <div className="flex justify-center items-center bg-gray-200 h-screen">
+      <ToastContainer 
+        position="top-center"
+      />
       <div className="bg-white p-4 rounded-md w-1/4">
         <h2 className="text-3xl font-semibold mb-3">Register</h2>
         <form onSubmit={handleSubmit}>
