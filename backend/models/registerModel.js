@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcryptjs';
 
 const registerSchema = mongoose.Schema(
   {
@@ -13,5 +14,13 @@ const registerSchema = mongoose.Schema(
     }
   }
 );
+
+registerSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
 
 export const Register = mongoose.model('Register', registerSchema);

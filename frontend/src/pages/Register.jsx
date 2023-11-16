@@ -98,7 +98,7 @@ const Register = () => {
         <div className="flex flex-col items-center justify-center">
           <p>Already have an account?</p>
           <Link
-            to="/login"
+            to="/"
             className="w-[100px] px-3 py-2 border border-gray-300 bg-gray-100 rounded-md text-center mt-2"
           >
             Login

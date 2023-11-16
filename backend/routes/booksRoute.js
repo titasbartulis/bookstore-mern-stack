@@ -1,11 +1,11 @@
 import express from "express";
 import { Book } from "../models/bookModel.js";
-import { Register } from "../models/registerModel.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // Route for posting a book
-router.post("/", async (request, response) => {
+router.post("/", verifyToken, async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -59,7 +59,7 @@ router.get("/:id", async (request, response) => {
 });
 
 // Route for updating a book
-router.put("/:id", async (request, response) => {
+router.put("/:id", verifyToken, async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -87,7 +87,7 @@ router.put("/:id", async (request, response) => {
 });
 
 // Route for deleting a book
-router.delete("/:id", async (request, response) => {
+router.delete("/:id", verifyToken, async (request, response) => {
   try {
     const { id } = request.params;
 

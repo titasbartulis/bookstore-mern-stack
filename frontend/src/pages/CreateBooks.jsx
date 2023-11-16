@@ -21,7 +21,11 @@ const CreateBooks = () => {
     };
     setLoading(true);
     axios
-      .post(`${import.meta.env.VITE_API_URL}/books`, data)
+      .post(`${import.meta.env.VITE_API_URL}/books`, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('The book was created successfully.', { variant: 'success' });

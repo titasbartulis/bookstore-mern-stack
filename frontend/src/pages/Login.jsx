@@ -18,11 +18,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = "https://jsonplaceholder.typicode.com/posts";
+    const endpoint = `${import.meta.env.VITE_API_URL}`;
 
     try {
       const response = await axios.post(endpoint, formData);
-      console.log("Response:", response.data);
+      localStorage.setItem('token', response.data.token);
       setFormData(initialFormData);
       navigate("/home");
     } catch (error) {
