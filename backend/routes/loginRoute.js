@@ -23,11 +23,15 @@ router.post("/", async (request, response) => {
         .json({ message: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      }
+    );
 
-    response.json({ token });
+    response.json({ token, role: user.role });
   } catch (error) {
     response.status(500).json({ message: "Internal server error" });
   }

@@ -23,6 +23,7 @@ const Login = () => {
     try {
       const response = await axios.post(endpoint, formData);
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.role);
       setFormData(initialFormData);
       navigate("/home");
     } catch (error) {

@@ -17,6 +17,7 @@ const Logout = () => {
         }
       );
       localStorage.removeItem("token");
+      localStorage.removeItem("role");
       navigate("/");
     } catch (error) {
       console.error("Error when trying to logout:", error);
