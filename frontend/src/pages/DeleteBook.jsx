@@ -15,7 +15,11 @@ const DeleteBook = () => {
     setLoading(true);
     const endpoint = import.meta.env.VITE_API_URL;
     axios
-      .delete(`${endpoint}/books/${id}`)
+      .delete(`${endpoint}/books/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar("The book was deleted successfully.", {

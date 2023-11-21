@@ -24,7 +24,7 @@ const Register = () => {
     try {
       const response = await axios.post(endpoint, formData);
       toast.success("Registration successful, please login.");
-      navigate("/"); // Redirect immediately after success
+      navigate("/");
     } catch (error) {
       if (
         error.response &&

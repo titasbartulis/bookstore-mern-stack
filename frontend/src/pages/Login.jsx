@@ -22,6 +22,8 @@ const Login = () => {
     const endpoint = `${import.meta.env.VITE_API_URL}`;
     try {
       const response = await axios.post(endpoint, formData);
+      localStorage.setItem('token', response.data.token);
+      setFormData(initialFormData);
       if (response.status === 200) {
         toast.success("Login successful");
       }

@@ -29,7 +29,7 @@ router.post("/", async (request, response) => {
     const register = await Register.create(newRegister);
     return response.status(201).send(register);
   } catch (error) {
-    response.status(500).send({ message: "Internal Server Error" });
+    return response.status(500).send({ message: "Internal Server Error" });
   }
 });
 

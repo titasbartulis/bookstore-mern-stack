@@ -40,7 +40,11 @@ const EditBook = () => {
     setLoading(true);
     const endpoint = import.meta.env.VITE_API_URL;
     axios
-      .put(`${endpoint}/books/${id}`, data)
+      .put(`${endpoint}/books/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar("The book was edited successfully.", {
