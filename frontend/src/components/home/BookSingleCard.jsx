@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle, BiShow } from "react-icons/bi";
@@ -10,7 +9,6 @@ import BookModal from "./BookModal";
 
 const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
-  const userRole = localStorage.getItem("role");
 
   return (
     <div
@@ -37,20 +35,12 @@ const BookSingleCard = ({ book }) => {
         <Link to={`/books/details/${book._id}`}>
           <BsInfoCircle className="text-2x1 text-gray-800" />
         </Link>
-        {(userRole === "admin" || userRole === "editor") && (
-          <>
-            <Link to={`/books/edit/${book._id}`}>
-              <AiOutlineEdit className="text-2x1 text-yellow-600" />
-            </Link>
-          </>
-        )}
-        {userRole === "admin" && (
-          <>
-            <Link to={`/books/delete/${book._id}`}>
-              <MdOutlineDelete className="text-2x1 text-red-600" />
-            </Link>
-          </>
-        )}
+        <Link to={`/books/edit/${book._id}`}>
+          <AiOutlineEdit className="text-2x1 text-yellow-600" />
+        </Link>
+        <Link to={`/books/delete/${book._id}`}>
+          <MdOutlineDelete className="text-2x1 text-red-600" />
+        </Link>
       </div>
       {showModal && (
         <BookModal book={book} onClose={() => setShowModal(false)} />

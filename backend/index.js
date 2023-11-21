@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 import booksRoute from "./routes/booksRoute.js";
 import registersRoute from "./routes/registersRoute.js";
 import loginRoute from "./routes/loginRoute.js";
-import logoutRoute from "./routes/logoutRoute.js";
-import { cleanupRevokedTokens } from "./services/tokenCleanup.js";
 
 dotenv.config();
 const corsOptions = { origin: process.env.WEB_URL };
@@ -25,12 +23,11 @@ app.get("/", (request, response) => {
 app.use("/books", booksRoute);
 app.use("/registers", registersRoute);
 app.use("/", loginRoute);
-app.use("/logout", logoutRoute);
 
 const PORT = process.env.PORT;
 
 mongoose
-  .connect(process.env.mongoDBURL)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
@@ -40,8 +37,3 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
- setInterval(async () => {
-   console.log("Running scheduled cleanup of revoked tokens...");
-   await cleanupRevokedTokens();
- }, 3600000);

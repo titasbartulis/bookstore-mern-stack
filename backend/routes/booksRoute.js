@@ -1,12 +1,10 @@
 import express from "express";
 import { Book } from "../models/bookModel.js";
-import checkRole from '../middleware/roleMiddleware.js';
-import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // Route for posting a book
-router.post("/", verifyToken, checkRole(['admin', 'editor']), async (request, response) => {
+router.post("/", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -60,7 +58,7 @@ router.get("/:id", async (request, response) => {
 });
 
 // Route for updating a book
-router.put("/:id", verifyToken, checkRole(['admin', 'editor']), async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -88,7 +86,7 @@ router.put("/:id", verifyToken, checkRole(['admin', 'editor']), async (request, 
 });
 
 // Route for deleting a book
-router.delete("/:id", verifyToken, checkRole(['admin']), async (request, response) => {
+router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
 

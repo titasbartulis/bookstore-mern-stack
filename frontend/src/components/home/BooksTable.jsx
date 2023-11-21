@@ -4,7 +4,6 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 
 const BooksTable = ({ books }) => {
-  const userRole = localStorage.getItem("role");
   return (
     <table className="w-full border-separate border-spacing-2">
       <thead>
@@ -40,20 +39,12 @@ const BooksTable = ({ books }) => {
                 <Link to={`/books/details/${book._id}`}>
                   <BsInfoCircle className="text-2x1 text-gray-800" />
                 </Link>
-                {(userRole === "admin" || userRole === "editor") && (
-                  <>
-                    <Link to={`/books/edit/${book._id}`}>
-                      <AiOutlineEdit className="text-2x1 text-yellow-600" />
-                    </Link>
-                  </>
-                )}
-                {userRole === "admin" && (
-                  <>
-                    <Link to={`/books/delete/${book._id}`}>
-                      <MdOutlineDelete className="text-2x1 text-red-600" />
-                    </Link>
-                  </>
-                )}
+                <Link to={`/books/edit/${book._id}`}>
+                  <AiOutlineEdit className="text-2x1 text-yellow-600" />
+                </Link>
+                <Link to={`/books/delete/${book._id}`}>
+                  <MdOutlineDelete className="text-2x1 text-red-600" />
+                </Link>
               </div>
             </td>
           </tr>

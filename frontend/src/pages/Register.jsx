@@ -22,11 +22,15 @@ const Register = () => {
     const endpoint = `${import.meta.env.VITE_API_URL}/registers`;
 
     try {
-      await axios.post(endpoint, formData);
-      setFormData(initialFormData);
-      navigate("/");
+      const response = await axios.post(endpoint, formData);
+      toast.success("Registration successful, please login.");
+      navigate("/"); // Redirect immediately after success
     } catch (error) {
-      if (error.response && error.response.data) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         toast.error(error.response.data.message);
       } else {
         toast.error("An error occurred while submitting the form.");
@@ -35,9 +39,7 @@ const Register = () => {
   };
   return (
     <div className="flex justify-center items-center bg-gray-200 h-screen">
-      <ToastContainer 
-        position="top-center"
-      />
+      <ToastContainer position="top-center" />
       <div className="bg-white p-4 rounded-md w-1/4">
         <h2 className="text-3xl font-semibold mb-3">Register</h2>
         <form onSubmit={handleSubmit}>

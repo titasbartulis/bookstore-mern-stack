@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
@@ -21,11 +21,7 @@ const CreateBooks = () => {
     };
     setLoading(true);
     axios
-      .post(`${import.meta.env.VITE_API_URL}/books`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .post(`${import.meta.env.VITE_API_URL}/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('The book was created successfully.', { variant: 'success' });
@@ -33,7 +29,6 @@ const CreateBooks = () => {
       })
       .catch((error) => {
         setLoading(false);
-        //alert('An error happened. Please check the console.');
         enqueueSnackbar('An error happened. Please check the console.', { variant: 'error' });
         console.log(error);
       });

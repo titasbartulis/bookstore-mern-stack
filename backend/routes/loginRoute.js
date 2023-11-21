@@ -1,6 +1,5 @@
 import express, { response } from "express";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { Register } from "../models/registerModel.js";
 
 const router = express.Router();
@@ -23,17 +22,9 @@ router.post("/", async (request, response) => {
         .json({ message: "Invalid email or password" });
     }
 
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-      }
-    );
-
-    response.json({ token, role: user.role });
+    response.json({ message: "Login successful" });
   } catch (error) {
-    response.status(500).json({ message: "Internal server error" });
+    response.status(500).json({ message: "Internal Server Error" });
   }
 });
 

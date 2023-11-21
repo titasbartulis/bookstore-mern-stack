@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
@@ -40,11 +40,7 @@ const EditBook = () => {
     setLoading(true);
     const endpoint = import.meta.env.VITE_API_URL;
     axios
-      .put(`${endpoint}/books/${id}`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .put(`${endpoint}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("The book was edited successfully.", {
@@ -54,7 +50,6 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        //alert('An error happened. Please check the console.');
         enqueueSnackbar("An error happened. Please check the console.", {
           variant: "error",
         });
