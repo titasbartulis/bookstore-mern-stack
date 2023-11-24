@@ -22,7 +22,7 @@ const Login = () => {
     const endpoint = `${import.meta.env.VITE_API_URL}`;
     try {
       const response = await axios.post(endpoint, formData);
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem("token", response.data.token);
       setFormData(initialFormData);
       if (response.status === 200) {
         toast.success("Login successful");
@@ -77,7 +77,7 @@ const Login = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 text-center">
             <button
               type="submit"
               className="w-[100px] px-3 py-2 bg-green-500 text-white rounded-md"
