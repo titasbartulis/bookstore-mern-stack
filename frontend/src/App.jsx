@@ -8,8 +8,12 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import useAuth from "./hooks/useAuth";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, allowedRoles = [] }) => {
+  const userRole = localStorage.getItem('role');
   useAuth();
+  if (allowedRoles.length > 0 && !allowedRoles.includes(userRole)) {
+    console.log('Not allowed');
+  }
   return children;
 };
 
@@ -29,7 +33,7 @@ const App = () => {
       <Route
         path="/books/create"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin', 'editor']}>
             <CreateBook />
           </ProtectedRoute>
         }
@@ -45,7 +49,7 @@ const App = () => {
       <Route
         path="/books/edit/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin', 'editor']}>
             <EditBook />
           </ProtectedRoute>
         }
@@ -53,7 +57,7 @@ const App = () => {
       <Route
         path="/books/delete/:id"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin']}>
             <DeleteBook />
           </ProtectedRoute>
         }

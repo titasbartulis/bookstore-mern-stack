@@ -1,10 +1,11 @@
 import express from "express";
 import { Book } from "../models/bookModel.js";
+import checkRole from '../middleware/roleMiddleware.js';
 
 const router = express.Router();
 
 // Route for posting a book
-router.post("/", async (request, response) => {
+router.post("/", checkRole(['admin', 'editor']), async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -60,7 +61,7 @@ router.get("/:id", async (request, response) => {
 });
 
 // Route for updating a book
-router.put("/:id", async (request, response) => {
+router.put("/:id", checkRole(['admin', 'editor']), async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -89,7 +90,7 @@ router.put("/:id", async (request, response) => {
 });
 
 // Route for deleting a book
-router.delete("/:id", async (request, response) => {
+router.delete("/:id", checkRole(['admin']), async (request, response) => {
   try {
     const { id } = request.params;
 

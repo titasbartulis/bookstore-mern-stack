@@ -55,7 +55,7 @@ const Home = () => {
         <Logout />
       </div>
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl my-8 font-bold">Books List</h1>
+        <h1 className="text-4xl my-8 font-bold">Books For Sale!</h1>
         <Link to="/books/create">
           <MdOutlineAddBox className="text-sky-800 text-4x1 w-12 h-12" />
         </Link>
