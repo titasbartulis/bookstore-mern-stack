@@ -81,6 +81,7 @@ const Login = () => {
             <button
               type="submit"
               className="w-[100px] px-3 py-2 bg-green-500 text-white rounded-md"
+              onClick={handleSubmit}
             >
               Login
             </button>

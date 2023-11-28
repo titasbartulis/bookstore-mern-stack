@@ -29,7 +29,7 @@ const App = () => {
       <Route
         path="/books/create"
         element={
-          <ProtectedRoute allowedRoles={["admin", "editor"]}>
+          <ProtectedRoute>
             <CreateBook />
           </ProtectedRoute>
         }
@@ -45,7 +45,7 @@ const App = () => {
       <Route
         path="/books/edit/:id"
         element={
-          <ProtectedRoute allowedRoles={["admin", "editor"]}>
+          <ProtectedRoute>
             <EditBook />
           </ProtectedRoute>
         }
@@ -53,7 +53,7 @@ const App = () => {
       <Route
         path="/books/delete/:id"
         element={
-          <ProtectedRoute allowedRoles={["admin"]}>
+          <ProtectedRoute>
             <DeleteBook />
           </ProtectedRoute>
         }
