@@ -6,6 +6,7 @@ import booksRoute from "./routes/booksRoute.js";
 import registersRoute from "./routes/registersRoute.js";
 import loginRoute from "./routes/loginRoute.js";
 import logoutRoute from "./routes/logoutRoute.js";
+import authenticate from "./middleware/authMiddleware.js";
 import { cleanupRevokedTokens } from "./services/tokenCleanup.js";
 
 dotenv.config();
@@ -21,10 +22,10 @@ app.get("/", (request, response) => {
   return response.status(234).send("Welcome to MERN Stack Tutorial");
 });
 
-app.use("/books", booksRoute);
+app.use("/books", authenticate, booksRoute);
 app.use("/registers", registersRoute);
 app.use("/", loginRoute);
-app.use("/logout", logoutRoute);
+app.use("/logout", authenticate, logoutRoute);
 
 const PORT = process.env.PORT;
 

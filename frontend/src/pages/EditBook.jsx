@@ -9,6 +9,7 @@ const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [price, setPrice] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,11 +18,16 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${import.meta.env.VITE_API_URL}/books/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/books/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setTitle(response.data.title);
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear);
+        setPrice(response.data.price);
         setLoading(false);
       })
       .catch((error) => {
@@ -36,6 +42,7 @@ const EditBook = () => {
       title,
       author,
       publishYear,
+      price
     };
     setLoading(true);
     const endpoint = import.meta.env.VITE_API_URL;
@@ -91,6 +98,15 @@ const EditBook = () => {
             type="text"
             value={publishYear}
             onChange={(e) => setPublishYear(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full"
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Price</label>
+          <input
+            type="text"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full"
           />
         </div>

@@ -17,14 +17,14 @@ const Home = () => {
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get('token');
     if (token) {
-      localStorage.setItem('jwt', token);
+      localStorage.setItem('token', token);
     }
 
     setLoading(true);
     axios
       .get(`${import.meta.env.VITE_API_URL}/books`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+          Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
       .then((response) => {
