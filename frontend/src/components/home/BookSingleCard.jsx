@@ -14,39 +14,39 @@ const BookSingleCard = ({ book }) => {
   return (
     <div
       key={book._id}
-      className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl bg-white"
+      className="border-2-grey-500 rounded-lg px-16 py-8 m-16 relative shadow-xl bg-white"
     >
-      <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
+      <h2 className="hidden absolute top-4 right-8 px-16 py-4 bg-red-300 rounded-lg">
         {book.publishYear}
       </h2>
-      <h4 className="my-2 text-gray-500">{book._id}</h4>
-      <div className="flex justify-start items-center gap-x-2">
-        <PiBookOpenTextLight className="text-red-300 text-2xl" />
-        <h2 className="my-1">{book.title}</h2>
+      <h4 className="hidden my-8 text-grey-500">{book._id}</h4>
+      <div className="flex flex-st flex-ai-c gap-x-8">
+        <PiBookOpenTextLight className="text-red-300 fs-24 lh-32" />
+        <h2 className="my-4">{book.title}</h2>
       </div>
-      <div className="flex justify-start items-center gap-x-2">
-        <BiUserCircle className="text-red-300 text-2xl" />
-        <h2 className="my-1">{book.author}</h2>
+      <div className="flex flex-st flex-ai-c gap-x-8">
+        <BiUserCircle className="text-red-300 fs-24 lh-32" />
+        <h2 className="my-4">{book.author}</h2>
       </div>
-      <div className="flex justify-start items-center gap-x-2">
-        <h2 className="my-1">Price - {book.price}€</h2>
+      <div className="flex flex-st flex-ai-c gap-x-8">
+        <h2 className="my-4">Price - {book.price}€</h2>
       </div>
-      <div className="flex justify-between items-center gap-x-2 mt-4 p-4">
+      <div className="flex flex-sb flex-ai-c gap-x-8 mt-16 p-16">
         <BiShow
-          className="text-3xl text-blue-800 hover:text-black cursor-pointer"
+          className="fs-30 lh-36 text-blue-800 cursor-pointer"
           onClick={() => setShowModal(true)}
         />
         {(userRole === "admin" || userRole === "editor") && (
           <>
             <Link to={`/books/edit/${book._id}`}>
-              <AiOutlineEdit className="text-2x1 text-yellow-600" />
+              <AiOutlineEdit className="fs-24 lh-32 text-yellow-600" />
             </Link>
           </>
         )}
         {userRole === "admin" && (
           <>
             <Link to={`/books/delete/${book._id}`}>
-              <MdOutlineDelete className="text-2x1 text-red-600" />
+              <MdOutlineDelete className="fs-24 lh-32 text-red-600" />
             </Link>
           </>
         )}

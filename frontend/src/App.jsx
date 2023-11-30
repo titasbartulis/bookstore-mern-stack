@@ -1,4 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import About_Bookhub from './pages/About_Bookhub/About_Bookhub';
+import Home_Bookhub from './pages/Home_Bookhub/Home_Bookhub';
+import BookList from "./components/BookList/BookList";
+import BookDetails from "./components/BookDetails/BookDetails";
 import Home from "./pages/Home";
 import CreateBook from "./pages/CreateBooks";
 import ShowBook from "./pages/ShowBook";
@@ -7,12 +11,13 @@ import DeleteBook from "./pages/DeleteBook";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import useAuth from "./hooks/useAuth";
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   const userRole = localStorage.getItem('role');
   useAuth();
   if (allowedRoles.length > 0 && !allowedRoles.includes(userRole)) {
-    console.log('Not allowed');
+    return <Navigate to="/" replace />;
   }
   return children;
 };
@@ -20,6 +25,17 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 const App = () => {
   return (
     <Routes>
+
+      {/* First project's routes */} 
+
+      <Route path = "/home_bookhub" element={<Home_Bookhub />}>
+        <Route path = "/home_bookhub/about_bookhub" element={<About_Bookhub />} />
+        <Route path = "/home_bookhub/book" element={<BookList />} />
+        <Route path = "/home_bookhub/book/:id" element={<BookDetails />} />
+      </Route>
+
+      {/* Second project's routes */} 
+
       <Route
         path="/home"
         element={
@@ -28,6 +44,7 @@ const App = () => {
           </ProtectedRoute>
         }
       />
+      
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route

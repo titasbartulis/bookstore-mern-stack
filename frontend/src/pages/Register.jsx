@@ -38,13 +38,13 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center bg-gray-200 h-screen">
+    <div className="flex flex-c flex-ai-c bg-grey-200 h-screen">
       <ToastContainer position="top-center" />
-      <div className="bg-white p-4 rounded-md w-1/4">
-        <h2 className="text-3xl font-semibold mb-3">Register</h2>
+      <div className="bg-white p-16 rounded-md w-25-pct">
+        <h2 className="fs-30 lh-36 fw-6 mb-12">Register</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="firstName" className="block font-medium">
+          <div className="mb-16">
+            <label htmlFor="firstName" className="block fw-5">
               Name
             </label>
             <input
@@ -53,13 +53,13 @@ const Register = () => {
               autoComplete="off"
               name="firstName"
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
               value={formData.firstName}
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block font-medium">
+          <div className="mb-16">
+            <label htmlFor="email" className="block fw-5">
               Email
             </label>
             <input
@@ -68,13 +68,13 @@ const Register = () => {
               autoComplete="off"
               name="email"
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
               value={formData.email}
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block font-medium">
+          <div className="mb-16">
+            <label htmlFor="password" className="block fw-5">
               Password
             </label>
             <input
@@ -83,25 +83,25 @@ const Register = () => {
               autoComplete="off"
               name="password"
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
               value={formData.password}
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-16">
             <button
               type="submit"
-              className="w-[100px] px-3 py-2 bg-green-500 text-white rounded-md"
+              className="w-100 px-12 py-8 bg-green-500 text-white rounded-md"
             >
               Register
             </button>
           </div>
         </form>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-column flex-ai-c flex-c">
           <p>Already have an account?</p>
           <Link
             to="/"
-            className="w-[100px] px-3 py-2 border border-gray-300 bg-gray-100 rounded-md text-center mt-2"
+            className="w-100 px-12 py-8 border-grey-300 bg-grey-100 rounded-md text-center mt-8"
           >
             Login
           </Link>

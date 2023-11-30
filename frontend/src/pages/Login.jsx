@@ -42,60 +42,73 @@ const Login = () => {
     navigate("/home");
   };
 
+  const goToBookhub = (e) => {
+    e.preventDefault();
+    console.log('go to bookhub');
+    navigate('/home_bookhub');
+  }
+
   return (
-    <div className="flex justify-center items-center bg-gray-200 h-screen">
-      <ToastContainer position="top-center" />
-      <div className="bg-white p-4 rounded-md w-1/4">
-        <h2 className="text-3xl font-semibold mb-3">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              autoComplete="off"
-              name="email"
-              required
-              className="w-full px-3 py-2 border rounded-md"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block font-medium">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              autoComplete="off"
-              name="password"
-              required
-              className="w-full px-3 py-2 border rounded-md"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="mb-4 text-center">
-            <button
-              type="submit"
-              className="w-[100px] px-3 py-2 bg-green-500 text-white rounded-md"
-              onClick={handleSubmit}
+    <div>
+      {/* <div className="flex flex-c flex-ai-c bg-grey-200">
+        <button 
+          className="w-100 bg-red-500 text-white fw-6 rounded-lg"
+          onClick={goToBookhub}>BOOKHUB</button>
+      </div> */}
+      <div className="flex flex-c flex-ai-c bg-grey-200 h-screen">
+        <ToastContainer position="top-center" />
+        <div className="bg-white p-16 rounded-md w-25-pct">
+          <h2 className="fs-30 lh-36 fw-6 mb-12">Login</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-16">
+              <label htmlFor="email" className="block fw-5">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                autoComplete="off"
+                name="email"
+                required
+                className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="mb-16">
+              <label htmlFor="password" className="block fw-5">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                autoComplete="off"
+                name="password"
+                required
+                className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
+                value={formData.password}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="mb-16 text-center">
+              <button
+                type="submit"
+                className="w-100 px-12 py-8 bg-green-500 text-white rounded-md"
+                onClick={handleSubmit}
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <div className="flex flex-column flex-ai-c flex-c">
+            <p>Already have an account?</p>
+            <Link
+              to="/register"
+              className="w-100 px-12 py-8 border-grey-300 bg-grey-100 rounded-md text-center mt-8"
             >
-              Login
-            </button>
+              Register
+            </Link>
           </div>
-        </form>
-        <div className="flex flex-col items-center justify-center">
-          <p>Already have an account?</p>
-          <Link
-            to="/register"
-            className="w-[100px] px-3 py-2 border border-gray-300 bg-gray-100 rounded-md text-center mt-2"
-          >
-            Register
-          </Link>
         </div>
       </div>
     </div>

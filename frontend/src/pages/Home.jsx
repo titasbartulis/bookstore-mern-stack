@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/Spinner";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineAddBox } from "react-icons/md";
-import BooksTable from "../components/home/BooksTable";
-import BooksCard from "../components/home/BooksCard";
+import BooksTable from "../components/home/BooksTable/BooksTable";
+import BooksCard from "../components/home/BooksCard/BooksCard";
 import Logout from "../components/Logout";
 
 const Home = () => {
@@ -12,20 +12,21 @@ const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState("table");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const token = queryParams.get('token');
+    const token = queryParams.get("token");
     if (token) {
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
     }
 
     setLoading(true);
     axios
       .get(`${import.meta.env.VITE_API_URL}/books`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
       .then((response) => {
         setBooks(response.data.data);
@@ -37,27 +38,39 @@ const Home = () => {
       });
   }, [location]);
 
+  const goToBookhub = (e) => {
+    e.preventDefault();
+    console.log('go to bookhub');
+    navigate('/home_bookhub');
+  }
+
   return (
-    <div className="p-4">
-      <div className="flex justify-center items-center gap-x-4">
+    <div className="p-16">
+      <div className="flex flex-c flex-ai-c gap-x-16">
         <button
-          className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+          className="bg-sky-300 px-16 py-4 rounded-lg"
           onClick={() => setShowType("table")}
         >
           Table
         </button>
         <button
-          className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+          className="bg-sky-300 px-16 py-4 rounded-lg"
           onClick={() => setShowType("card")}
         >
           Card
         </button>
+        <button
+          className="w-100 bg-red-500 text-white fw-6 rounded-lg"
+          onClick={goToBookhub}
+        >
+          BOOKHUB
+        </button>
         <Logout />
       </div>
-      <div className="flex justify-between items-center">
-        <h1 className="text-4xl my-8 font-bold">Books For Sale!</h1>
+      <div className="flex flex-sb flex-ai-c">
+        <h1 className="fs-36 lh-40 my-32 fw-7">Books For Sale!</h1>
         <Link to="/books/create">
-          <MdOutlineAddBox className="text-sky-800 text-4x1 w-12 h-12" />
+          <MdOutlineAddBox className="text-sky-800 fs-36 lh-40 w-48 h-48" />
         </Link>
       </div>
       {loading ? (

@@ -56,6 +56,10 @@ const EditBook = () => {
         setLoading(false);
         enqueueSnackbar("The book was edited successfully.", {
           variant: "success",
+          style: {
+            fontSize: '20px',
+            width: '350px',
+          }
         });
         navigate("/home");
       })
@@ -69,48 +73,48 @@ const EditBook = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-16">
       <BackButton />
-      <h1 className="text-3xl my-4 font-bold">Edit Book</h1>
+      <h1 className="fs-30 lh-36 my-16 fw-7">Edit Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto bg-white">
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Title</label>
+      <div className="flex flex-column border-2-sky-400 rounded-xl w-600 p-16 mx-auto bg-white">
+        <div className="my-16">
+          <label className="fs-20 lh-28 mr-16 text-grey-500">Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2-grey-500 px-16 py-8 w-100-pct"
           />
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Author</label>
+        <div className="my-16">
+          <label className="fs-20 lh-28 mr-16 text-grey-500">Author</label>
           <input
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2-grey-500 px-16 py-8 w-100-pct"
           />
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Publish Year</label>
+        <div className="my-16">
+          <label className="fs-20 lh-28 mr-16 text-grey-500">Publish Year</label>
           <input
             type="text"
             value={publishYear}
             onChange={(e) => setPublishYear(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2-grey-500 px-16 py-8 w-100-pct"
           />
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Price</label>
+        <div className="my-16">
+          <label className="fs-20 lh-28 mr-16 text-grey-500">Price</label>
           <input
             type="text"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2-grey-500 px-16 py-8 w-100-pct"
           />
         </div>
-        <button className="p-2 bg-sky-300 m-8" onClick={handleEditBook}>
+        <button className="p-8 bg-sky-300 m-32" onClick={handleEditBook}>
           Save
         </button>
       </div>

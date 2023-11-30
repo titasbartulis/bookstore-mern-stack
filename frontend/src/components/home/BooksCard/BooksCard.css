@@ -1,0 +1,24 @@
+/* Base styles (Desktop first) */
+
+/* Extra-large screens */
+.books-single-card {
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Large screens */
+@media screen and (max-width: 1280px) {
+  .books-single-card {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .hidden {display: none;}
+}
+
+/* Small screens */
+@media screen and (max-width: 640px) {
+  .books-single-card {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hidden {display: none;}
+}

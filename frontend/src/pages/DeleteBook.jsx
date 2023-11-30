@@ -24,6 +24,10 @@ const DeleteBook = () => {
         setLoading(false);
         enqueueSnackbar("The book was deleted successfully.", {
           variant: "success",
+          style: {
+            fontSize: '20px',
+            width: '350px',
+          }
         });
         navigate("/home");
       })
@@ -36,14 +40,14 @@ const DeleteBook = () => {
       });
   };
   return (
-    <div className="p-4">
+    <div className="p-16">
       <BackButton />
-      <h1 className="text-3xl my-4 font-bold">Delete Book</h1>
+      <h1 className="fs-30 lh-36 my-16 fw-7">Delete Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto bg-white">
-        <h3 className="text-2xl">Are you sure about deleting this book?</h3>
+      <div className="flex flex-column flex-ai-c border-2-sky-400 rounded-xl w-600 p-32 mx-auto bg-white">
+        <h3 className="fs-24 lh-32">Are you sure about deleting this book?</h3>
         <button
-          className="p-4 bg-red-600 text-white m-8 w-full"
+          className="p-16 bg-red-600 text-white m-32 w-100-pct"
           onClick={handleDeleteBook}
         >
           Yes, delete it
