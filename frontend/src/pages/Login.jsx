@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className="h-screen bg-grey-200-gradient">
-      <div className="border mb-100 p-4 inline-block rounded-xl fw-4">
+      <div className="border mb-50 p-4 inline-block rounded-xl fw-4">
         <p className="fw-8 fs-22">Welcome to the Book Store project!</p>
         <p className="fw-5 fs-18">This project features three distinct user roles: the Shop Owner, the Owner's Assistant, and the Customer (a regular user).</p>
         <p>For the Owner's account, use the email: <strong>owner@gmail.com</strong> and the password: <strong>owner</strong></p>
@@ -35,6 +35,7 @@ const Login = () => {
         <p>A pre-existing account for a Customer is available - simply log in with the email: <strong>customer@gmail.com</strong> and the password: <strong>customer</strong></p>
         <p>Feel free to register a new account as well. Any account created anew will be assigned the role of a regular user.</p>
       </div>
+      <p className='fw-7 fs-20 text-red-600 mb-50'>Please be aware that the registration and login process on our website currently experiences some delays. We ask for your patience when performing these actions.</p>
       <div className="flex flex-c flex-ai-c">
         <ToastContainer position="top-center" />
         <div className="bg-white p-16 rounded-md w-25-pct">
