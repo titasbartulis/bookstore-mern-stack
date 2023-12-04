@@ -40,7 +40,6 @@ const Home = () => {
 
   const goToBookhub = (e) => {
     e.preventDefault();
-    console.log('go to bookhub');
     navigate('/home_bookhub');
   }
 
