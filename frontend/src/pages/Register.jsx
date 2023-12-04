@@ -38,7 +38,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex flex-c flex-ai-c bg-grey-200 h-screen">
+    <div className="flex flex-c flex-ai-c bg-grey-200-gradient h-screen">
       <ToastContainer position="top-center" />
       <div className="bg-white p-16 rounded-md w-25-pct">
         <h2 className="fs-30 lh-36 fw-6 mb-12">Register</h2>
