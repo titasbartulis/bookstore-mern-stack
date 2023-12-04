@@ -56,7 +56,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/home"
                 className="nav-link text-uppercase text-white fs-22 fw-6 ls-1"
               >
                 Exit
