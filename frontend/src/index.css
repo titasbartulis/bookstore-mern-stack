@@ -87,7 +87,9 @@ input{
 .bg-white{background-color: var(--white-color);}
 .bg-black{background-color: var(--black-color);}
 .bg-grey-100{background-color: var(--grey-color-100);}
-.bg-grey-200{background-color: var(--grey-color-200);}
+.bg-grey-200-gradient{
+  background: linear-gradient(to right, #8a8d92, #b0b3b8, #e5e7eb, #b0b3b8, #8a8d92);
+}
 .bg-red-300{background-color: var(--red-color-300);}
 .bg-red-500{background-color: var(--red-color-500);}
 .bg-red-600{background-color: var(--red-color-600);}
@@ -241,6 +243,7 @@ input{
 .mr-8{margin-right: 0.8rem;}
 .mr-4{margin-right: 0.4rem;}
 
+.mb-100{margin-bottom: 10rem;}
 .mb-16{margin-bottom: 1.6rem;}
 .mb-12{margin-bottom: 1.2rem;}
 .mb-8{margin-bottom: 0.8rem;}
@@ -356,6 +359,8 @@ input{
 .border-spacing-2{border-spacing: 0.8rem 0.8rem;}
 
 .block{display: block;}
+.inline-block{display: inline-block;}
+.inline-flex{display: inline-block;}
 .flex{
   display: flex;
 }

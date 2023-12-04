@@ -1,99 +1,71 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-  const initialFormData = {
-    email: "",
-    password: "",
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     const endpoint = `${import.meta.env.VITE_API_URL}`;
     try {
-      const response = await axios.post(endpoint, formData);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", response.data.role);
-      setFormData(initialFormData);
+      const response = await axios.post(endpoint, data);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.role);
       if (response.status === 200) {
-        toast.success("Login successful");
+        toast.success('Login successful');
+        navigate('/home');
       }
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("An error occurred while submitting the form.");
-      }
+      const message = error.response?.data?.message || 'An error occurred while submitting the form.';
+      toast.error(message);
     }
-    navigate("/home");
   };
 
-  const goToBookhub = (e) => {
-    e.preventDefault();
-    navigate('/home_bookhub');
-  }
-
   return (
-    <div>
-      {/* <div className="flex flex-c flex-ai-c bg-grey-200">
-        <button 
-          className="w-100 bg-red-500 text-white fw-6 rounded-lg"
-          onClick={goToBookhub}>BOOKHUB</button>
-      </div> */}
-      <div className="flex flex-c flex-ai-c bg-grey-200 h-screen">
+    <div className="h-screen bg-grey-200-gradient">
+      <div className="border mb-100 p-4 inline-block rounded-xl fw-4">
+        <p className="fw-8 fs-22">Welcome to the Book Store project!</p>
+        <p className="fw-5 fs-18">This project features three distinct user roles: the Shop Owner, the Owner's Assistant, and the Customer (a regular user).</p>
+        <p>For the Owner's account, use the email: <strong>owner@gmail.com</strong> and the password: <strong>owner</strong></p>
+        <p>For the Assistant's account, the email is <strong>assistant@gmail.com</strong> with the password: <strong>assistant</strong></p>
+        <p>A pre-existing account for a Customer is available - simply log in with the email: <strong>customer@gmail.com</strong> and the password: <strong>customer</strong></p>
+        <p>Feel free to register a new account as well. Any account created anew will be assigned the role of a regular user.</p>
+      </div>
+      <div className="flex flex-c flex-ai-c">
         <ToastContainer position="top-center" />
         <div className="bg-white p-16 rounded-md w-25-pct">
           <h2 className="fs-30 lh-36 fw-6 mb-12">Login</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-16">
-              <label htmlFor="email" className="block fw-5">
-                Email
-              </label>
+              <label htmlFor="email" className="block fw-5">Email</label>
               <input
                 type="email"
                 placeholder="Enter Email"
                 autoComplete="off"
-                name="email"
-                required
+                {...register('email', { required: 'Email is required' })}
                 className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
-                value={formData.email}
-                onChange={handleInputChange}
               />
+              {errors.email && <p className="text-red-600">{errors.email.message}</p>}
             </div>
             <div className="mb-16">
-              <label htmlFor="password" className="block fw-5">
-                Password
-              </label>
+              <label htmlFor="password" className="block fw-5">Password</label>
               <input
                 type="password"
                 placeholder="Enter Password"
                 autoComplete="off"
-                name="password"
-                required
+                {...register('password', { required: 'Password is required' })}
                 className="w-100-pct px-12 py-8 border-grey-300 rounded-md"
-                value={formData.password}
-                onChange={handleInputChange}
               />
+              {errors.password && <p className="text-red-600">{errors.password.message}</p>}
             </div>
             <div className="mb-16 text-center">
               <button
                 type="submit"
                 className="w-100 px-12 py-8 bg-green-500 text-white rounded-md"
-                onClick={handleSubmit}
               >
                 Login
               </button>
