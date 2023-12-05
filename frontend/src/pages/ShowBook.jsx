@@ -28,13 +28,13 @@ const ShowBook = () => {
   }, []);
 
   return (
-    <div className="p-16">
+    <div className="p-16 h-screen bg-grey-200-gradient">
       <BackButton />
       <h1 className="fs-30 lh-36 my-16 fw-7">Show Book</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-column border-2-sky-400 rounded-xl w-fit p-16 bg-white">
+        <div className="flex flex-column border-2-sky-400 rounded-xl w-fit p-16 bg-slate-200">
           <div className="my-16">
             <span className="fs-20 lh-28 mr-16 text-grey-500">Id</span>
             <span>{book._id}</span>

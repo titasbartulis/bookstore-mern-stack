@@ -14,7 +14,7 @@ const BookSingleCard = ({ book }) => {
   return (
     <div
       key={book._id}
-      className="border-2-grey-500 rounded-lg px-16 py-8 m-16 relative shadow-xl bg-white"
+      className="border-2-grey-500 rounded-lg px-16 py-8 m-16 relative shadow-xl bg-slate-200"
     >
       <h2 className="hidden absolute top-4 right-8 px-16 py-4 bg-red-300 rounded-lg">
         {book.publishYear}

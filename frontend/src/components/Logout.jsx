@@ -25,10 +25,10 @@ const Logout = () => {
   };
   return (
     <button
-      className="bg-red-600 px-16 py-4 rounded-lg"
+      className="bg-red-600 px-16 py-4 rounded-lg fs-20 fw-6"
       onClick={logout}
     >
-      Logout
+      LOGOUT
     </button>
   );
 };

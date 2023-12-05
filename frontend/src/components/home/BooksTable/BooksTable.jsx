@@ -7,7 +7,7 @@ import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 const BooksTable = ({ books }) => {
   const userRole = localStorage.getItem("role");
   return (
-    <table className="w-100-pct border-separate border-spacing-2 bg-white rounded-md">
+    <table className="w-100-pct border-separate border-spacing-2 bg-slate-200 rounded-md">
       <thead>
         <tr>
           <th className="table-header">No</th>

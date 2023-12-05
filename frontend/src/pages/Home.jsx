@@ -40,31 +40,35 @@ const Home = () => {
 
   const goToBookhub = (e) => {
     e.preventDefault();
-    navigate('/home_bookhub');
-  }
+    navigate("/home_bookhub");
+  };
 
   return (
-    <div className="p-16">
-      <div className="flex flex-c flex-ai-c gap-x-16">
-        <button
-          className="bg-sky-300 px-16 py-4 rounded-lg"
-          onClick={() => setShowType("table")}
-        >
-          Table
-        </button>
-        <button
-          className="bg-sky-300 px-16 py-4 rounded-lg"
-          onClick={() => setShowType("card")}
-        >
-          Card
-        </button>
-        <button
-          className="w-100 bg-red-500 text-white fw-6 rounded-lg"
-          onClick={goToBookhub}
-        >
-          BOOKHUB
-        </button>
-        <Logout />
+    <div className="h-screen p-16 bg-grey-200-gradient">
+      <div className="flex flex-sb">
+        <div className="flex gap-x-16">
+          <button
+            className="bg-sky-300 px-16 py-4 rounded-lg"
+            onClick={() => setShowType("table")}
+          >
+            Table view
+          </button>
+          <button
+            className="bg-sky-300 px-16 py-4 rounded-lg"
+            onClick={() => setShowType("card")}
+          >
+            Card view
+          </button>
+        </div>
+        <div className="flex gap-x-16">
+          <button
+            className=" bg-red-500 text-white px-16 py-4 rounded-lg fs-20 fw-6"
+            onClick={goToBookhub}
+          >
+            BOOKHUB
+          </button>
+          <Logout />
+        </div>
       </div>
       <div className="flex flex-sb flex-ai-c">
         <h1 className="fs-36 lh-40 my-32 fw-7">Books For Sale!</h1>

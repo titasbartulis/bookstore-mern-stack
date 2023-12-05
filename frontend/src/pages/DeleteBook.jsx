@@ -40,11 +40,11 @@ const DeleteBook = () => {
       });
   };
   return (
-    <div className="p-16">
+    <div className="p-16 h-screen bg-grey-200-gradient">
       <BackButton />
       <h1 className="fs-30 lh-36 my-16 fw-7">Delete Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-column flex-ai-c border-2-sky-400 rounded-xl w-600 p-32 mx-auto bg-white">
+      <div className="flex flex-column flex-ai-c border-2-sky-400 rounded-xl w-600 p-32 mx-auto bg-slate-200">
         <h3 className="fs-24 lh-32">Are you sure about deleting this book?</h3>
         <button
           className="p-16 bg-red-600 text-white m-32 w-100-pct"
