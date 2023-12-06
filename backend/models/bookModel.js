@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 const bookSchema = mongoose.Schema(
   {
@@ -20,7 +22,7 @@ const bookSchema = mongoose.Schema(
     },
     stripeId: {
       type: String,
-      default: 'price_1OKGyoFa3ryAuRZJWTmjeFEU',
+      default: process.env.BOOK_PRICE,
     }
   },
   {

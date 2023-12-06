@@ -1,10 +1,7 @@
-// sk_test_51OJsXJFa3ryAuRZJm2MZwc2K6A19sY7poHFvmgiv0DLxqmyfiEwznGmyHXLb14xv4nHmebrrvuz84PNqxLeq4vm7001M9lgZfG
-// Book: price_1OKGyoFa3ryAuRZJWTmjeFEU
-
+import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
 import booksRoute from "./routes/booksRoute.js";
 import registersRoute from "./routes/registersRoute.js";
 import loginRoute from "./routes/loginRoute.js";

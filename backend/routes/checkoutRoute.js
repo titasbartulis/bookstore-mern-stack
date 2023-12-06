@@ -1,8 +1,10 @@
 import express from "express";
 import Stripe from "stripe";
+import dotenv from "dotenv";
+dotenv.config();
 
 const router = express.Router();
-const stripe = new Stripe('sk_test_51OJsXJFa3ryAuRZJm2MZwc2K6A19sY7poHFvmgiv0DLxqmyfiEwznGmyHXLb14xv4nHmebrrvuz84PNqxLeq4vm7001M9lgZfG');
+const stripe = new Stripe(process.env.SK_TEST);
 
 router.post("/", async (request, response) => {
   const items = request.body.items;

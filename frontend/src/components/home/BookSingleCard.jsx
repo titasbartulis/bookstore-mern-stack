@@ -113,5 +113,5 @@ export default BookSingleCard;
 
 BookSingleCard.propTypes = {
   book: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
 };

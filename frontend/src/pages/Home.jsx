@@ -26,7 +26,6 @@ const Home = () => {
     }
 
     if (session_id) {
-      console.log('we have session id');
       axios.get(`${import.meta.env.VITE_API_URL}/checkout/confirm`, {
         params: { session_id: session_id }
       })
