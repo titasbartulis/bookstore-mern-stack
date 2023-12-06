@@ -5,8 +5,6 @@ import Book from "../BookList/Book";
 import Loading from "../Loader/Loader";
 import coverImg from "../../images/cover_not_found.jpg";
 
-//https://covers.openlibrary.org/b/id/240727-S.jpg
-
 const BookList = () => {
   const {books, loading, resultTitle} = useGlobalContext();
   const booksWithCovers = books.map((singleBook) => {
