@@ -1,0 +1,19 @@
+.table-header,
+.table-header-hidden {
+  border: 1px solid var(--slate-color-600);
+  border-radius: 0.6rem;
+}
+
+.table-cell,
+.table-cell-hidden {
+  border: 1px solid var(--slate-color-700);
+  border-radius: 0.6rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .table-header-hidden,
+  .table-cell-hidden {
+      display: none;
+  }
+}

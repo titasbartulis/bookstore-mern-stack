@@ -17,6 +17,10 @@ const bookSchema = mongoose.Schema(
     price: {
       type: Number,
       required: true,
+    },
+    stripeId: {
+      type: String,
+      default: 'price_1OKGyoFa3ryAuRZJWTmjeFEU',
     }
   },
   {

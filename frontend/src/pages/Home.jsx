@@ -6,6 +6,9 @@ import { MdOutlineAddBox } from "react-icons/md";
 import BooksTable from "../components/home/BooksTable/BooksTable";
 import BooksCard from "../components/home/BooksCard/BooksCard";
 import Logout from "../components/Logout";
+import Checkout from "../components/Checkout";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   const location = useLocation();
@@ -17,8 +20,24 @@ const Home = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get("token");
+    const session_id = queryParams.get("session_id");
     if (token) {
       localStorage.setItem("token", token);
+    }
+
+    if (session_id) {
+      axios.get(`${import.meta.env.VITE_API_URL}/checkout/confirm`, {
+        params: { session_id: session_id }
+      })
+      .then(response => {
+        toast.success("Thanks for your order!", {
+          position: "top-center",
+        });
+      })
+      .catch(error => {
+        console.error('Error confirming checkout:', error);
+        toast.error("There was an issue confirming your order.");
+      });
     }
 
     setLoading(true);
@@ -45,6 +64,7 @@ const Home = () => {
 
   return (
     <div className="h-screen p-16 bg-grey-200-gradient">
+      <ToastContainer position="top-center" />
       <div className="flex flex-sb">
         <div className="flex gap-x-16">
           <button
@@ -71,11 +91,12 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-sb flex-ai-c">
-        <h1 className="fs-36 lh-40 my-32 fw-7">Books For Sale!</h1>
+        <h1 className="fs-36 lh-40 mt-32 mb-12 fw-7">Books For Sale!</h1>
         <Link to="/books/create">
           <MdOutlineAddBox className="text-sky-800 fs-36 lh-40 w-48 h-48" />
         </Link>
       </div>
+      <Checkout />
       {loading ? (
         <Spinner />
       ) : showType === "table" ? (

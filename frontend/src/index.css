@@ -7,10 +7,12 @@
   --red-color-600: rgb(220, 38, 38);
   --yellow-color-600: rgb(202, 138, 4);
   --green-color-500: #22C55E;
+  --green-purchase-color: rgb(25, 135, 84);
   --grey-color: #f3f3f3;
   --grey-color-100: #F3F4F6;
   --grey-color-200: #e5e7eb;
   --grey-color-300: #d1d5db;
+  --grey-color-400: #9ca3af;
   --grey-color-500: rgb(107, 114, 128);
   --grey-color-800: rgb(31, 41, 55);
   --slate-color-200: rgb(226 232 240);
@@ -18,6 +20,7 @@
   --slate-color-700: rgb(51, 65, 85);
   --blue-color-800: rgb(30, 64, 175);
   --sky-color-300: rgb(125, 211, 252);
+  --sky-color-500: rgb(14 165 233);
   --sky-color-400: rgb(56, 189, 248);
   --sky-color-600: rgb(2, 132, 199);
   --sky-color-800: rgb(7, 89, 133);
@@ -96,8 +99,10 @@ input{
 .bg-red-500{background-color: var(--red-color-500);}
 .bg-red-600{background-color: var(--red-color-600);}
 .bg-green-500{background-color: var(--green-color-500);}
+.bg-green-purchase{background-color: var(--green-purchase-color);}
 .bg-blue-800{background-color: var(--blue-color-800);}
 .bg-sky-300{background-color: var(--sky-color-300);}
+.bg-sky-500{background-color: var(--sky-color-500);}
 .bg-sky-600{background-color: var(--sky-color-600);}
 .bg-sky-800{background-color: var(--sky-color-800);}
 
@@ -152,13 +157,17 @@ input{
 .fs-22{font-size: 2.2rem;}
 .fs-24{font-size: 2.4rem;}
 .fs-26{font-size: 2.6rem;}
+.fs-28{font-size: 2.8rem;}
 .fs-30{font-size: 3rem;}
 .fs-36{font-size: 3.6rem;}
+.fs-40{font-size: 4rem;}
 
 /* line height */
+.lh-24{line-height: 2.4rem;}
 .lh-32{line-height: 3.2rem;}
 .lh-36{line-height: 3.6rem;}
 .lh-40{line-height: 4rem;}
+.lh-48{line-height: 4.8rem;}
 
 /* letter spacing */
 .ls-1{letter-spacing: 1px;}
@@ -197,13 +206,25 @@ input{
   padding-top: 1.6rem;
   padding-bottom: 1.6rem;
 }
+.py-12{
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
 .py-8{
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
 }
+.py-6{
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
 .py-4{
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
+}
+.py-2{
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 
 .px-32{
@@ -218,6 +239,14 @@ input{
   padding-left: 1.6rem;
   padding-right: 1.6rem;
 }
+.px-12{
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+.px-10{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .px-8{
   padding-left: 0.8rem;
   padding-right: 0.8rem;
@@ -226,15 +255,23 @@ input{
   padding-left: 0.4rem;
   padding-right: 0.4rem;
 }
+.px-2{
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
 
 .p-32{padding: 3.2rem;}
 .p-24{padding: 2.4rem;}
 .p-16{padding: 1.6rem;}
 .p-8{padding: 0.8rem;}
 .p-4{padding: 0.4rem;}
+.p-3{padding: 0.3rem;}
+.p-2{padding: 0.2rem;}
 
 
 /* margin */
+.mt-32{margin-top: 3.2rem;}
+.mt-28{margin-top: 2.8rem;}
 .mt-16{margin-top: 1.6rem;}
 .mt-12{margin-top: 1.2rem;}
 .mt-8{margin-top: 0.8rem;}
@@ -242,8 +279,11 @@ input{
 
 .mr-16{margin-right: 1.6rem;}
 .mr-12{margin-right: 1.2rem;}
+.mr-10{margin-right: 1rem;}
 .mr-8{margin-right: 0.8rem;}
+.mr-6{margin-right: 0.6rem;}
 .mr-4{margin-right: 0.4rem;}
+.mr-2{margin-right: 0.2rem;}
 
 .mb-100{margin-bottom: 10rem;}
 .mb-50{margin-bottom: 5rem;}
@@ -333,23 +373,33 @@ input{
 
 /* width */
 .w-fit{width: fit-content;}
-.w-600{width: 600px;}
-.w-100{width: 100px;}
-.w-64{width: 64px;}
-.w-48{width: 48px;}
+.w-600{width: 60rem;}
+.w-500{width: 50rem;}
+.w-100{width: 10rem;}
+.w-64{width: 6.4rem;}
+.w-48{width: 4.8rem;}
 .max-w-full{max-width: 100%;}
 .w-100-pct{width: 100%}
 .w-25-pct{width: 25%;}
 
 /* height */
+.max-h-full{max-height: 100%;}
 .h-screen{height: 100vh;}
-.h-400{height: 400px;}
-.h-64{height: 64px;}
-.h-48{height: 48px;}
+.h-500{height: 50rem;}
+.h-450{height: 45rem;}
+.h-400{height: 40rem;}
+.h-380{height: 38rem;}
+.h-200{height: 20rem;}
+.h-130{height: 13rem;}
+.h-78{height: 7.8rem;}
+.h-70{height: 7rem;}
+.h-64{height: 6.4rem;}
+.h-48{height: 4.8rem;}
 
 
 /* border */
 .border{border: 1px solid var(--black-color);}
+.border-bottom-grey-400{border-bottom: 1px solid var(--grey-color-400);}
 .border-grey-300{border: 1px solid var(--grey-color-300);}
 .border-2-sky-400{border: 1px solid var(--sky-color-400);}
 .border-2-grey-500{border: 1px solid var(--grey-color-500);}
@@ -386,6 +436,9 @@ input{
 /* Column and row gaps */
 .gap-x-16{column-gap: 1.6rem;}
 .gap-x-8{column-gap: 0.8rem;}
+.gap-x-6{column-gap: 0.6rem;}
+.gap-x-4{column-gap: 0.4rem;}
+.gap-x-2{column-gap: 0.2rem;}
 .gap-y-16{row-gap: 1.6rem}
 .gap-y-8{row-gap: 0.8rem;}
 

@@ -1,3 +1,6 @@
+// sk_test_51OJsXJFa3ryAuRZJm2MZwc2K6A19sY7poHFvmgiv0DLxqmyfiEwznGmyHXLb14xv4nHmebrrvuz84PNqxLeq4vm7001M9lgZfG
+// Book: price_1OKGyoFa3ryAuRZJWTmjeFEU
+
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -6,12 +9,16 @@ import booksRoute from "./routes/booksRoute.js";
 import registersRoute from "./routes/registersRoute.js";
 import loginRoute from "./routes/loginRoute.js";
 import logoutRoute from "./routes/logoutRoute.js";
+import checkoutRoute from './routes/checkoutRoute.js';
 import authenticate from "./middleware/authMiddleware.js";
 import { cleanupRevokedTokens } from "./services/tokenCleanup.js";
 
 dotenv.config();
 const corsOptions = { origin: process.env.WEB_URL };
 const app = express();
+
+// Stripe
+app.use(express.static('public'));
 
 // Middleware for parsing request body
 app.use(express.json());
@@ -26,6 +33,7 @@ app.use("/books", authenticate, booksRoute);
 app.use("/registers", registersRoute);
 app.use("/", loginRoute);
 app.use("/logout", authenticate, logoutRoute);
+app.use('/checkout', checkoutRoute);
 
 const PORT = process.env.PORT;
 
