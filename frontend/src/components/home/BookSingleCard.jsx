@@ -9,6 +9,20 @@ import BookModal from "./BookModal";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+const toggleVisibility = async () => {
+  try {
+    await axios.patch(
+      `/books/toggle-visibility/${book._id}`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+  } catch (error) {
+    console.error("Error updating book visibility:", error);
+  }
+};
 
 const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
@@ -39,6 +53,16 @@ const BookSingleCard = ({ book }) => {
       <div className="flex flex-sb flex-ai-c gap-x-8 mt-16 p-16">
         {bookQuantity > 0 ? (
           <>
+            {userRole === "admin" && (
+                <button
+                  className="bg-red-500 text-white py-4 px-10 rounded-lg"
+                  onClick={toggleVisibility}
+                >
+                  {book.isHiddenFromCustomers
+                    ? "Show to customer"
+                    : "Hide from customer"}
+                </button>
+              )}
             <div className="flex flex-column">
               <div className="flex flex-sb">
                 <div className="mr-16">In Cart: {bookQuantity}</div>
@@ -73,6 +97,16 @@ const BookSingleCard = ({ book }) => {
           </>
         ) : (
           <>
+            {userRole === "admin" && (
+                <button
+                  className="bg-red-500 text-white py-4 px-10 rounded-lg"
+                  onClick={toggleVisibility}
+                >
+                  {book.isHiddenFromCustomers
+                    ? "Show to customer"
+                    : "Hide from customer"}
+                </button>
+              )}
             <button
               className="bg-sky-600 text-white py-4 px-10 rounded-lg"
               onClick={() => {

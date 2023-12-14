@@ -1,6 +1,8 @@
 import express from "express";
 import { Book } from "../models/bookModel.js";
 import checkRole from '../middleware/roleMiddleware.js';
+import verifyToken from "../middleware/authMiddleware.js";
+
 
 const router = express.Router();
 
@@ -104,6 +106,20 @@ router.delete("/:id", checkRole(['admin']), async (request, response) => {
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
+  }
+});
+
+router.patch('/toggle-visibility/:id', verifyToken, checkRole(['admin']), async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+    book.isHiddenFromCustomers = !book.isHiddenFromCustomers;
+    await book.save();
+    res.json({ message: "Book visibility updated", book });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

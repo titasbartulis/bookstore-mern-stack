@@ -4,6 +4,10 @@ import BookTableEntry from "./BookTableEntry/BookTableEntry";
 
 const BooksTable = ({ books }) => {
   const userRole = localStorage.getItem("role");
+  let visibleBooks = books;
+  if (userRole === 'user') {
+    visibleBooks = books.filter(book => !book.isHiddenFromCustomers);
+  }
   return (
     <table className="w-100-pct border-separate border-spacing-2 bg-slate-200 rounded-md">
       <thead>
@@ -17,7 +21,7 @@ const BooksTable = ({ books }) => {
         </tr>
       </thead>
       <tbody>
-        {books.map((book, index) => (
+        {visibleBooks.map((book, index) => (
           <BookTableEntry key={book._id} book={book} index={index} />
         ))}
       </tbody>

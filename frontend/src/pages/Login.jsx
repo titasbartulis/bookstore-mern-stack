@@ -35,7 +35,7 @@ const Login = () => {
         <p>A pre-existing account for a Customer is available - simply log in with the email: <strong>customer@gmail.com</strong> and the password: <strong>customer</strong></p>
         <p>Feel free to register a new account as well. Any account created anew will be assigned the role of a regular user.</p>
       </div>
-      <p className='fw-7 fs-20 text-red-600 mb-50'>Please be aware that the registration and login process on our website currently experiences some delays. We ask for your patience when performing these actions.</p>
+      <p className='fw-7 fs-20 text-red-600 mb-50'>The logins are displayed for app's demonstration purposes only. </p>
       <div className="flex flex-c flex-ai-c">
         <ToastContainer position="top-center" />
         <div className="bg-white p-16 rounded-md w-25-pct">

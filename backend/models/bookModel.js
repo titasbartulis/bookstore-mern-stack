@@ -23,6 +23,10 @@ const bookSchema = mongoose.Schema(
     stripeId: {
       type: String,
       default: process.env.BOOK_PRICE,
+    },
+    isHiddenFromCustomers: {
+      type: Boolean,
+      default: false,
     }
   },
   {
