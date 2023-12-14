@@ -9,3 +9,5 @@ This is a bookstore web application that allows users to browse, manage, and pur
 - Add new books (admin)
 - Update book details (admin)
 - Delete books from the catalog (admin)
+
+![](admin-login.gif)
